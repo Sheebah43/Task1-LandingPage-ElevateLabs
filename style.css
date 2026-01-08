@@ -7,21 +7,24 @@ header{
     justify-content: space-between; /* makes sure the elements are aligned properly in their places and the info elements don't overlap with the logo */
     align-items: center;
     background-color: rgba(168, 109, 109, 0.5);
-    height: 100px;
+    padding: 0 20px; /* adds breathing space */ 
+    height: 80px; /* slightly smaller for responsiveness */
 }
 ul{
     /* list-style-type controls only the marker style (e.g roman numerals) while list-style sets list-style-type, list-style-position, and list-style-image all at once */
     list-style-type: none; 
     display: flex;
+    flex-wrap: wrap; /* allows wrapping on small screens */ 
+    margin: 0; 
+    padding: 0;
 }
 li a{
     padding-right: 20px;
-    text-align: right;
     margin-left: 10px; /*gives the space to the left of the elements, separating them*/
     text-decoration: none;
     color: rgb(132, 22, 22);            
     transition: color 0.3s; 
-    font-size: 24px; 
+    font-size: clamp(1rem, 2.5vw, 24px); /* scales with viewport */
     font-weight:bold;  
 }
 li a:hover {
@@ -35,36 +38,35 @@ li a:hover {
     justify-content: center; 
     align-items: center;
     color: white;
-  
-/* For the backgroumd image */
- background: linear-gradient(
-    rgba(165, 101, 101, 0.5),
-    rgba(81, 55, 55, 0.5) 
-    ),
-    url('tello.jpg');
-    background-size: contain;
-    background-position: center; 
+    background: linear-gradient( 
+        rgba(165, 101, 101, 0.5), 
+        rgba(81, 55, 55, 0.5) ), 
+        url('tello.jpg'); 
+        background-size: cover;
+        background-position: center;
 }
-h1{
-    color: #fff;
-    font-size: 100px;
-    text-shadow: 3px 3px 6px maroon;
+  
+h1 { 
+    color: #fff; 
+    font-size: clamp(2rem, 8vw, 100px); /* responsive scaling*/ 
+    text-shadow: 3px 3px 6px maroon; 
     margin-bottom: 10px; 
 }
+
 .tagline{
-    font-size: 30px;
+    font-size: clamp(1rem, 4vw, 30px);
     color:#fff;
     font-style: italic;
     margin-top: 0;
 }
 button {
-    background-color: maroon;  
-    color: white;             
-    opacity: 0.9;               
-    border: none;               
-    border-radius: 20px;        
-    padding: 15px 40px;         
-    font-size: 1.2rem;         
+    background-color: maroon;   
+    color: white;              
+    opacity: 0.9;              
+    border: none;              
+    border-radius: 20px;      
+    padding: 15px 40px;        
+    font-size: 1.2rem;          
     cursor: pointer;            
     transition: background-color 0.3s, opacity 0.3s;
 }
@@ -76,17 +78,39 @@ button:hover {
     background-color: #a83232; 
     opacity: 1;               
 }
-footer {
-    background-color: #755353;
-    display: flex;
+footer { 
+    background-color: #755353; 
+    display: flex; 
+    flex-direction: column; /* stack items on small screens */ 
     justify-content: center; 
-    align-items: center;  
-    width: 100%;  
-    box-sizing: border-box;
-    color: aliceblue;
+    align-items: center; 
+    width: 100%; 
+    box-sizing: border-box; 
+    color: aliceblue; 
+    padding: 20px; 
+    text-align: center; }
+footer p { 
+    margin: 10px 0; 
+} 
+.link 
+{ 
+    text-decoration: none; 
+    color: aliceblue; 
+    margin: 0 8px; 
 }
-.link{
-    text-decoration: none;
-    color: aliceblue;
-}
-
+ /* Media Queries for smaller screens */ 
+ @media (max-width: 768px) { 
+    header { 
+        flex-direction: column; 
+        height: auto; 
+        padding: 10px; 
+    } 
+    ul { 
+        justify-content: center; 
+    } 
+    footer { 
+        font-size: 0.9rem; 
+    } 
+    .link { 
+        display: block; /* stack links vertically */ 
+        margin: 5px 0; } }
